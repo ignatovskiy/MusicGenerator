@@ -5,15 +5,15 @@ from bs4 import BeautifulSoup
 FREEMIDI_URL = "https://freemidi.org/"
 
 
-def get_page_data(url):
+def _get_page_data(url):
     return requests.get(url)
 
 
-def get_content_page(page_data):
+def _get_content_page(page_data):
     return page_data.content
 
 
-def get_page_soup(page_content):
+def _get_page_soup(page_content):
     return BeautifulSoup(page_content, features="lxml")
 
 
@@ -30,20 +30,39 @@ def parse_genres_list(page_soup):
     return genres_list
 
 
+def get_page_soup(url):
+    return _get_page_soup(_get_content_page(_get_page_data(url)))
+
+
 def get_genres_list():
-    return parse_genres_list(get_page_soup(get_content_page(get_page_data(FREEMIDI_URL))))
+    return parse_genres_list(get_page_soup(FREEMIDI_URL))
 
 
-def get_artists_from_genre(genre):
-    page_soup = get_page_soup(get_content_page(get_page_data(FREEMIDI_URL + genre)))
-    artists = page_soup.find_all("div", {"class": "genre-link-text"})
-    return [artist.a.get("href") for artist in artists]
+def parse_universal(url, postfix, main_element, att, value):
+    page_soup = get_page_soup(url + postfix)
+    elements = page_soup.find_all(main_element, {att: value})
+    return [element.a.get("href") for element in elements] \
+        if main_element != "a" else elements[0].get("href")
+
+
+def get_artists_from_genre(genre_url):
+    return parse_universal(FREEMIDI_URL, genre_url, "div", "class", "genre-link-text")
+
+
+def get_tracks_from_artists(artist_url):
+    return parse_universal(FREEMIDI_URL, artist_url, "div", "class", "artist-song-cell")
+
+
+def get_track_download_link(track_url):
+    return parse_universal(FREEMIDI_URL, track_url, "a", "id", "downloadmidi")
 
 
 def main():
     genres = get_genres_list()
     test_artist = get_artists_from_genre(genres[0])
-    print(test_artist)
+    test_track = get_tracks_from_artists(test_artist[0])
+    track_link = get_track_download_link(test_track[0])
+    print(track_link)
 
 
 if __name__ == "__main__":
