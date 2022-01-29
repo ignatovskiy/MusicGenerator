@@ -17,7 +17,7 @@ def get_page_soup(page_content):
     return BeautifulSoup(page_content, features="lxml")
 
 
-def get_genres_list(page_soup):
+def parse_genres_list(page_soup):
     raw_genres_data = page_soup.find_all("li")
     genres_list = []
 
@@ -30,12 +30,20 @@ def get_genres_list(page_soup):
     return genres_list
 
 
+def get_genres_list():
+    return parse_genres_list(get_page_soup(get_content_page(get_page_data(FREEMIDI_URL))))
+
+
+def get_artists_from_genre(genre):
+    page_soup = get_page_soup(get_content_page(get_page_data(FREEMIDI_URL + genre)))
+    artists = page_soup.find_all("div", {"class": "genre-link-text"})
+    return [artist.a.get("href") for artist in artists]
+
+
 def main():
-    page_data = get_page_data(FREEMIDI_URL)
-    page_content = get_content_page(page_data)
-    page_soup = get_page_soup(page_content)
-    genres_list = get_genres_list(page_soup)
-    print(genres_list)
+    genres = get_genres_list()
+    test_artist = get_artists_from_genre(genres[0])
+    print(test_artist)
 
 
 if __name__ == "__main__":
