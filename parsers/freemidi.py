@@ -5,8 +5,8 @@ from bs4 import BeautifulSoup
 FREEMIDI_URL = "https://freemidi.org/"
 
 
-def _get_page_data(url):
-    return requests.get(url)
+def _get_page_data(url, stream=None, allow_redirects=False):
+    return requests.get(url, stream=stream, allow_redirects=allow_redirects)
 
 
 def _get_content_page(page_data):
@@ -57,12 +57,19 @@ def get_track_download_link(track_url):
     return parse_universal(FREEMIDI_URL, track_url, "a", "id", "downloadmidi")
 
 
+def download_track(download_link):
+    track_raw = _get_content_page(_get_page_data(FREEMIDI_URL + download_link, allow_redirects=False))
+    with open(download_link + ".mid", "wb") as f:
+        f.write(track_raw)
+
+
 def main():
     genres = get_genres_list()
     test_artist = get_artists_from_genre(genres[0])
     test_track = get_tracks_from_artists(test_artist[0])
     track_link = get_track_download_link(test_track[0])
-    print(track_link)
+    print(test_artist, test_track, track_link)
+    download_track(track_link)
 
 
 if __name__ == "__main__":
