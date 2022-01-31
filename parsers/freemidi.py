@@ -57,6 +57,18 @@ def get_track_download_link(track_url):
     return parse_universal(FREEMIDI_URL, track_url, "a", "id", "downloadmidi")
 
 
+def get_genre_name(genre):
+    return " ".join(genre.split('-')[1:]).title()
+
+
+def get_artist_name(artist_url):
+    return " ".join(artist_url.split('-')[2:]).title()
+
+
+def get_track_name(track_url):
+    return " ".join(track_url.split('-')[2:-1]).title()
+
+
 def download_track(download_link):
     track_raw = _get_content_page(_get_page_data(FREEMIDI_URL + download_link, allow_redirects=False))
     with open(download_link + ".mid", "wb") as f:
@@ -65,10 +77,11 @@ def download_track(download_link):
 
 def main():
     genres = get_genres_list()
+    print(genres)
     test_artist = get_artists_from_genre(genres[0])
+    print(get_genre_name(genres[0]))
     test_track = get_tracks_from_artists(test_artist[0])
     track_link = get_track_download_link(test_track[0])
-    print(test_artist, test_track, track_link)
     download_track(track_link)
 
 
