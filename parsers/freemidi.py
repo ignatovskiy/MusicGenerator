@@ -1,3 +1,5 @@
+import os
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -41,8 +43,13 @@ def get_genres_list():
 def parse_universal(url, postfix, main_element, att, value):
     page_soup = get_page_soup(url + postfix)
     elements = page_soup.find_all(main_element, {att: value})
-    return [element.a.get("href") for element in elements] \
-        if main_element != "a" else elements[0].get("href")
+
+    if main_element == "a":
+        return elements[0].get("href")
+    elif main_element == "ul":
+        return int(elements[0].text.split('\n')[2].strip().replace('»', '').strip()[-1])
+    else:
+        return [element.a.get("href") for element in elements]
 
 
 def get_artists_from_genre(genre_url):
@@ -57,6 +64,10 @@ def get_track_download_link(track_url):
     return parse_universal(FREEMIDI_URL, track_url, "a", "id", "downloadmidi")
 
 
+def get_pages_tracks(artist_url):
+    return parse_universal(FREEMIDI_URL, artist_url, "ul", "class", "pagination")
+
+
 def get_genre_name(genre):
     return " ".join(genre.split('-')[1:]).title()
 
@@ -69,20 +80,41 @@ def get_track_name(track_url):
     return " ".join(track_url.split('-')[2:-1]).title()
 
 
-def download_track(download_link):
+def download_track(download_link, path):
     track_raw = _get_content_page(_get_page_data(FREEMIDI_URL + download_link, allow_redirects=False))
-    with open(download_link + ".mid", "wb") as f:
+    with open(path + ".mid", "wb") as f:
         f.write(track_raw)
 
 
-def main():
+def processing():
     genres = get_genres_list()
-    print(genres)
-    test_artist = get_artists_from_genre(genres[0])
-    print(get_genre_name(genres[0]))
-    test_track = get_tracks_from_artists(test_artist[0])
-    track_link = get_track_download_link(test_track[0])
-    download_track(track_link)
+
+    for i, genre in enumerate(genres):
+        genre_name = get_genre_name(genre)
+        print(f"{genre_name} genre is downloading... ({(i + 1)} / {len(genres)})")
+        os.mkdir(genre_name)
+
+        artists = get_artists_from_genre(genre)
+        for j, artist in enumerate(artists):
+            artist_name = get_artist_name(artist)
+            print(f"{artist_name} artist is downloading... ({(j + 1)} / {len(artists)})")
+            os.mkdir(f"{genre_name}/{artist_name}")
+
+            pages = get_pages_tracks(artist)
+            for page in range(pages):
+                print(f"{page + 1} page is downloading... ({page + 1} / {pages})")
+                tracks = get_tracks_from_artists(f"{artist}-P-{page}")
+                for k, track in enumerate(tracks):
+                    track_name = get_track_name(track)
+                    print(f"{page + 1} page is downloading... ({page + 1} / {pages})")
+                    print(f"{track_name} track is downloading... ({(k + 1)} / {len(tracks)})")
+
+                    track_link = get_track_download_link(track)
+                    download_track(track_link, f"{genre_name}/{artist_name}/{track_name}")
+
+
+def main():
+    processing()
 
 
 if __name__ == "__main__":
