@@ -104,9 +104,12 @@ def processing():
             for page in range(pages):
                 print(f"{page + 1} page is downloading... ({page + 1} / {pages})")
                 tracks = get_tracks_from_artists(f"{artist}-P-{page}")
+                artist_name_part = " ".join(artist_name.split()[:-1])
+
                 for k, track in enumerate(tracks):
                     track_name = get_track_name(track)
-                    print(f"{page + 1} page is downloading... ({page + 1} / {pages})")
+                    if track_name.endswith(artist_name_part):
+                        track_name = track_name.replace(artist_name_part, '').strip()
                     print(f"{track_name} track is downloading... ({(k + 1)} / {len(tracks)})")
 
                     track_link = get_track_download_link(track)
