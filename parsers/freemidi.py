@@ -1,7 +1,5 @@
 import os
 
-import requests
-from bs4 import BeautifulSoup
 from common import _get_page_data, _get_content_page,\
     _get_page_soup, get_page_soup, parse_universal, download_track
 
