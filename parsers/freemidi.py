@@ -2,20 +2,10 @@ import os
 
 import requests
 from bs4 import BeautifulSoup
+from common import _get_page_data, _get_content_page,\
+    _get_page_soup, get_page_soup, parse_universal, download_track
 
 FREEMIDI_URL = "https://freemidi.org/"
-
-
-def _get_page_data(url, stream=None, allow_redirects=False):
-    return requests.get(url, stream=stream, allow_redirects=allow_redirects)
-
-
-def _get_content_page(page_data):
-    return page_data.content
-
-
-def _get_page_soup(page_content):
-    return BeautifulSoup(page_content, features="lxml")
 
 
 def parse_genres_list(page_soup):
@@ -31,23 +21,8 @@ def parse_genres_list(page_soup):
     return genres_list
 
 
-def get_page_soup(url):
-    return _get_page_soup(_get_content_page(_get_page_data(url)))
-
-
 def get_genres_list():
     return parse_genres_list(get_page_soup(FREEMIDI_URL))
-
-
-def parse_universal(url, postfix, main_element, att, value):
-    page_soup = get_page_soup(url + postfix)
-    elements = page_soup.find_all(main_element, {att: value})
-
-    if main_element == "a":
-        return elements[0].get("href")
-    if main_element == "ul":
-        return int(elements[0].text.split('\n')[2].strip().replace('»', '').strip()[-1])
-    return [element.a.get("href") for element in elements]
 
 
 def get_artists_from_genre(genre_url):
@@ -76,13 +51,6 @@ def get_artist_name(artist_url):
 
 def get_track_name(track_url):
     return " ".join(track_url.split('-')[2:-1]).title()
-
-
-def download_track(download_link, path):
-    track_raw = _get_content_page(_get_page_data
-                                  (FREEMIDI_URL + download_link, allow_redirects=False))
-    with open(path + ".mid", "wb") as file:
-        file.write(track_raw)
 
 
 def processing():
@@ -116,7 +84,8 @@ def processing():
                         print(f"{track_name} track is downloading... ({(k + 1)} / {len(tracks)})")
                         if not os.path.isfile(f"{genre_name}/{artist_name}/{track_name}"):
                             track_link = get_track_download_link(track)
-                            download_track(track_link, f"{genre_name}/{artist_name}/{track_name}")
+                            download_track(track_link, f"{genre_name}/{artist_name}/{track_name}",
+                                           FREEMIDI_URL)
             except IndexError:
                 pass
 
