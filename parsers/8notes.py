@@ -66,19 +66,20 @@ def parse_download_link(song):
 
 
 def get_file_name(download_link):
-    return download_link.split("/")[-1][:-4].replace("_", '').title()
+    return download_link.split("/")[-1][:-4].replace("_", ' ').title()
 
 
 def processing():
     instruments = get_instruments_list()
 
     for i, instrument in enumerate(instruments):
-        if not os.path.isdir(instrument):
-            os.mkdir(instrument)
+        instrument_name = instrument.title()
+        if not os.path.isdir(instrument_name):
+            os.mkdir(instrument_name)
 
         songs_raw = get_songs_from_instrument(instrument)
         max_page = get_pages_songs(songs_raw)
-        print(f"{instrument} songs is downloading... ({(i + 1)} / {len(instruments)})")
+        print(f"{instrument_name} songs is downloading... ({(i + 1)} / {len(instruments)})")
 
         for page in range(1, max_page + 1):
             tr_list = get_songs_from_page(page, instrument)
@@ -90,8 +91,8 @@ def processing():
                 file_name = get_file_name(download_link)
                 print(f"{file_name} track is downloading... ({j + 1} / {len(songs)})")
 
-                if not os.path.isfile(f"{instrument}/{file_name}"):
-                    download_track(download_link, f"{instrument}/{file_name}", EIGHTNOTES_URL)
+                if not os.path.isfile(f"{instrument_name}/{file_name}"):
+                    download_track(download_link, f"{instrument_name}/{file_name}", EIGHTNOTES_URL)
 
 
 def main():
