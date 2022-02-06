@@ -66,7 +66,7 @@ def parse_download_link(song):
 
 
 def get_file_name(download_link):
-    return download_link.split("/")[-1][:-4].replace("_", ' ').title()
+    return " ".join(download_link.split("/")[-1][:-4].replace("_", ' ').split()[:-1]).title()
 
 
 def processing():
