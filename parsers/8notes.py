@@ -87,12 +87,17 @@ def processing():
             print(f"{page} page is downloading... ({page} / {max_page})")
 
             for j, song in enumerate(songs):
-                download_link = parse_download_link(song)
-                file_name = get_file_name(download_link)
-                print(f"{file_name} track is downloading... ({j + 1} / {len(songs)})")
+                try:
+                    download_link = parse_download_link(song)
+                    file_name = get_file_name(download_link)
+                    print(f"{file_name} track is downloading... ({j + 1} / {len(songs)})")
 
-                if not os.path.isfile(f"{instrument_name}/{file_name}"):
-                    download_track(download_link, f"{instrument_name}/{file_name}", EIGHTNOTES_URL)
+                    if not os.path.isfile(f"{instrument_name}/{file_name}.mid"):
+                        download_track(download_link,
+                                       f"{instrument_name}/{file_name}",
+                                       EIGHTNOTES_URL)
+                except IndexError:
+                    continue
 
 
 def main():
