@@ -18,9 +18,14 @@ def get_page_soup(url):
     return _get_page_soup(_get_content_page(_get_page_data(url)))
 
 
-def parse_universal(url, postfix, main_element, att, value):
+def parse_universal(url, postfix, main_element, att=None, value=None):
     page_soup = get_page_soup(url + postfix)
-    elements = page_soup.find_all(main_element, {att: value})
+
+    if att and value:
+        elements = page_soup.find_all(main_element, {att: value})
+    else:
+        elements_raw = page_soup.find_all(main_element)
+        return elements_raw
 
     if main_element == "a":
         return elements[0].get("href")
