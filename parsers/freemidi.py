@@ -1,7 +1,6 @@
 import os
 
-from common import _get_page_data, _get_content_page,\
-    _get_page_soup, get_page_soup, parse_universal, download_track
+from common import get_page_soup, parse_universal, download_track
 
 FREEMIDI_URL = "https://freemidi.org/"
 
