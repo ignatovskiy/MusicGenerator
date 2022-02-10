@@ -47,7 +47,7 @@ def processing():
     consoles = get_consoles_list()
 
     for i, console in enumerate(consoles):
-        console_name = console.split("/")[-1].title()
+        console_name = console.split("/")[-2].title()
         if not os.path.isdir(console_name):
             os.mkdir(console_name)
 
