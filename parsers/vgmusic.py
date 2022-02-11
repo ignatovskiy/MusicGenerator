@@ -62,7 +62,7 @@ def processing():
                 print(f"{file_name} track is downloading... ({j + 1} / {len(songs)})")
 
                 if not os.path.isfile(f"{console_name}/{file_name}.mid"):
-                    download_track(song,
+                    download_track(console + song,
                                    f"{console_name}/{file_name}",
                                    VGMUSIC_URL)
             except IndexError:
