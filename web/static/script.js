@@ -40,18 +40,6 @@ bgDots = [
   }
 ];
 
-var gui = new dat.GUI();
-var f1 = gui.addFolder("Design");
-var f2 = gui.addFolder("Behaviour");
-f1.add(conf, "hue", 0, 360).step(1).name("Color");
-f1.add(conf, "opacity", 0.1, 1).step(0.1).name("Opacity");
-f1.add(conf, "width", 0.3, 3).step(0.1).name("Width");
-f1.add(conf, "length", 0.2, 2).step(0.1).name("Length");
-f2.add(conf, "emitNum", 1, 5).step(1).name("Amount");
-f2.add(conf, "speed", 0.5, 1.5).step(0.1).name("Speed");
-f2.add(conf, "maxLines", 100, 1000).step(1).name("Max Lines");
-//gui.add(conf, "shadow");
-
 function emitLine(){
   if(conf.maxLines < lines.length)
     return;
