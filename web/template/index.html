@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <title>Music Generator</title>
   <link rel="stylesheet" href="/static/style.css">
-
+  <nav>
+    <a href="/">APP</a>
+    <a href="/privacy">PRIVACY</a>
+    <a href="/license">LICENSE</a>
+    <div id="indicator"></div>
+    <style>
+        #indicator {
+            left: {{indicator_value}}%;
+        }
+    </style>
+  </nav>
 </head>
 <body>
 <canvas id="canvas"></canvas>
