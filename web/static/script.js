@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 window.onresize = function() {
   w = ctx.canvas.width = window.innerWidth;
   h = ctx.canvas.height = window.innerHeight;
+  h = 10 * h;
 };window.onresize();
 
 lines = [];
@@ -15,7 +16,7 @@ conf = {
   length: 1,
   emitNum: 2,
   speed: 1,
-  opacity: 0.6,
+  opacity: 0.3,
   maxLines: 300
 };
 
