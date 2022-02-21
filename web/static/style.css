@@ -120,8 +120,8 @@ nav a:nth-child(3):hover ~ #indicator {
 .three-dimensions-card {
   background: white;
   word-wrap: break-word;
-  height: 500px;
-  width: 1200px;
+  height: 70%;
+  width: 90%;
   top: 20%;
   left: 5%;
   position: absolute;
