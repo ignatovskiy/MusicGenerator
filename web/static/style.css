@@ -124,8 +124,8 @@ nav a:nth-child(3):hover ~ #indicator {
   top: 20%;
   left: 5%;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.41);
-  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(100px);
   border-radius: 30px;
   overflow: scroll;
 }
