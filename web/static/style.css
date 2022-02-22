@@ -136,7 +136,7 @@ nav a:nth-child(3):hover ~ #indicator {
     word-wrap: break-word;
     padding: 3%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
+    font-weight: regular;
 }
 
 .gh-ribbon{
