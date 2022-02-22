@@ -135,6 +135,8 @@ nav a:nth-child(3):hover ~ #indicator {
 .three-dimensions-card-text {
     word-wrap: break-word;
     padding: 3%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
 }
 
 .gh-ribbon{
