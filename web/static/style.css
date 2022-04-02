@@ -144,3 +144,9 @@ nav a:nth-child(3):hover ~ #indicator {
   top: 0.5%;
   left: 88.5%;
 }
+
+.audio-player{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}

@@ -7,10 +7,13 @@ with open("web/static/privacy", "r", encoding="UTF-8") as f:
 with open("web/static/license", "r", encoding="UTF-8") as f:
     license_card = f.read()
 
+with open("web/static/audio", "r", encoding="UTF-8") as f:
+    audio_card = f.read()
+
 
 @app.route('/')
 def render_start_page():
-    return render_template("index.html", indicator_value=7)
+    return render_template("index.html", indicator_value=7, audio_div=audio_card)
 
 
 @app.route('/privacy')
