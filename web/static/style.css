@@ -147,6 +147,70 @@ nav a:nth-child(3):hover ~ #indicator {
 
 .audio-player{
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 90%;
+  left: 40%;
+}
+
+.button {
+  position: absolute;
+  background-color: #000000;
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  top: 60%;
+  left: 50%;
+  font-size: 24px;
+  margin: 0 auto;
+  background: white;
+  background-color: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(100px);
+  border-radius: 50px;
+}
+
+.button#pop{
+  top: 30%;
+  left: 20%;
+}
+.button#rock{
+  top: 37%;
+  left: 20%;
+}
+.button#country{
+  top: 44%;
+  left: 20%;
+}
+.button#disco{
+  top: 51%;
+  left: 20%;
+}
+
+
+.button#piano{
+  top: 30%;
+  left: 45%;
+}
+.button#violin{
+  top: 37%;
+  left: 45%;
+}
+.button#trumpet{
+  top: 44%;
+  left: 45%;
+}
+
+
+.button#ds{
+  top: 30%;
+  left: 70%;
+}
+.button#nes{
+  top: 37%;
+  left: 70%;
+}
+.button#snes{
+  top: 44%;
+  left: 70%;
 }
