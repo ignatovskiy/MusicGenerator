@@ -13,6 +13,11 @@ with open("web/static/audio", "r", encoding="UTF-8") as f:
 
 @app.route('/')
 def render_start_page():
+    return render_template("index.html", indicator_value=7)
+
+
+@app.route('/generate/<model>/')
+def render_generate_page(model=None):
     return render_template("index.html", indicator_value=7, audio_div=audio_card)
 
 

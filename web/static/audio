@@ -1,1 +1,1 @@
-<div class="audio-player"><audio controls="controls" autoplay="autoplay"><source src="static/test100.wav" type="audio/wav"></audio></div>
+<div class="audio-player"><audio controls="controls" autoplay="autoplay"><source src="../../static/test100.wav" type="audio/wav"></audio></div>

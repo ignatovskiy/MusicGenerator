@@ -1,0 +1,22 @@
+<a href="/generate/pop/">
+<button class="button" id="pop" >Pop</button></a>
+<a href="/generate/rock/">
+<button class="button" id="rock">Rock</button></a>
+<a href="/generate/country/">
+<button class="button" id="country">Country</button></a>
+<a href="/generate/disco/">
+<button class="button" id="disco">Disco</button></a>
+
+<a href="/generate/piano/">
+<button class="button" id="piano">Piano</button></a>
+<a href="/generate/violin/">
+<button class="button" id="violin">Violin</button></a>
+<a href="/generate/trumpet/">
+<button class="button" id="trumpet">Trumpet</button></a>
+
+<a href="/generate/ds/">
+<button class="button" id="ds">3DS</button></a>
+<a href="/generate/nes/">
+<button class="button" id="nes">NES</button></a>
+<a href="/generate/snes/">
+<button class="button" id="snes">SNES</button></a>
