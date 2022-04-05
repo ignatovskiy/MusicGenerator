@@ -10,15 +10,18 @@ with open("web/static/license", "r", encoding="UTF-8") as f:
 with open("web/static/audio", "r", encoding="UTF-8") as f:
     audio_card = f.read()
 
+with open("web/static/buttons", "r", encoding="UTF-8") as f:
+    buttons = f.read()
+
 
 @app.route('/')
 def render_start_page():
-    return render_template("index.html", indicator_value=7)
+    return render_template("index.html", indicator_value=7, buttons=buttons)
 
 
 @app.route('/generate/<model>/')
 def render_generate_page(model=None):
-    return render_template("index.html", indicator_value=7, audio_div=audio_card)
+    return render_template("index.html", indicator_value=7, audio_div=audio_card, buttons=buttons, button_id=model)
 
 
 @app.route('/privacy')
