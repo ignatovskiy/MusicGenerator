@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 app = Flask(__name__, template_folder="template", static_folder='static')
 
+
 with open("web/static/privacy", "r", encoding="UTF-8") as f:
     privacy_card = f.read()
 
