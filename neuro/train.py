@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import json
+import argparse
 
 
 from model import create_model, save_weights_to_file
@@ -72,3 +73,20 @@ def train(raw_text, weights=10, epochs=100):
             print("Saving temp weights to 'weights.{}.h5' file".format(epoch + 1))
 
             save_weights_to_file(epoch + 1, model)
+
+
+def main(args_line):
+    with open(os.path.join(DATA_DIR, args_line.input), 'r', encoding="UTF-8") as inp_f:
+        input_data = inp_f.read()
+
+    train(input_data, args_line.epochs, args_line.save)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Training models.')
+    parser.add_argument('--input', default='input.txt', help='input file with text data')
+    parser.add_argument('--epochs', default=100, help='epochs for training')
+    parser.add_argument('--save', default=10, help='save weights every {} epochs')
+    args = parser.parse_args()
+
+    main(args)
