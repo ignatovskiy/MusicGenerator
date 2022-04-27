@@ -4,7 +4,7 @@ import json
 import argparse
 
 
-from model import create_model, save_weights_to_file
+from utils import create_model, save_weights_to_file
 
 
 SEQUENCE_SIZE = 64
@@ -27,7 +27,6 @@ def batch_handling(raw_text, vocabulary_size):
 
 
 DATA_DIR = 'input'
-LOG_DIR = 'results'
 
 
 def train(raw_text, weights=10, epochs=100):
@@ -84,9 +83,11 @@ def main(args_line):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Training models.')
+
     parser.add_argument('--input', default='input.txt', help='input file with text data')
     parser.add_argument('--epochs', default=100, help='epochs for training')
     parser.add_argument('--save', default=10, help='save weights every {} epochs')
+
     args = parser.parse_args()
 
     main(args)

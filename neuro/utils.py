@@ -31,7 +31,3 @@ def create_model(batch_size, sequence_len, vocabulary_size):
     temp_model.add(Activation('softmax'))
 
     return temp_model
-
-
-if __name__ == '__main__':
-    model = create_model(16, 64, 39)
