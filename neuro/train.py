@@ -40,8 +40,6 @@ def train(raw_text, weights=10, epochs=100):
             as json_file:
         json.dump(chars_to_id_dict, json_file)
 
-    id_to_char_dict = {char_id: char for (char, char_id) in chars_to_id_dict.items()}
-
     vocabulary_size = len(chars_to_id_dict)
     model = create_model(BATCH_SIZE, SEQUENCE_SIZE, vocabulary_size)
 
