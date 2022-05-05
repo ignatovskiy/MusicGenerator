@@ -1,5 +1,6 @@
 import json
 import os
+import argparse
 
 
 import numpy as np
@@ -71,3 +72,16 @@ def generate_melody(start_sequence, chars_amount):
             f.write("]")
 
     return sample_text
+
+
+def main(args_list):
+    print(generate_melody(args_list.start, args.len))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Generate ABC notation for MIDI file.')
+    parser.add_argument('--start', default='', help='start characters')
+    parser.add_argument('--len', default=256, help='chars amount for generation')
+    args = parser.parse_args()
+
+    main(args)
