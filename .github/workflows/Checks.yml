@@ -1,0 +1,35 @@
+name: Checks
+
+on: push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --config=setup.cfg --max-line-length=120 --show-source --statistics --exit-zero
+    - name: Run Codacy Analysis CLI
+      uses: codacy/codacy-analysis-cli-action@master
+    - name: PyCharm Python Security Scanner
+      uses: tonybaloney/pycharm-security@1.25.1
+    - name: urlchecker-action
+      uses: urlstechie/urlchecker-action@0.0.26
+      with:
+        force_pass : true
