@@ -38,14 +38,13 @@ However, all these services are closed source, require a paid subscription and d
 
 ## Built With
 
-* requests~=2.27.1
-* bs4~=0.0.1
-* beautifulsoup4~=4.11.1
-* Flask~=2.1.2
-* keras~=2.9.0
-* numpy~=1.22.4
-* music21~=7.3.3
-* pyFluidSynth~=1.3.0
+![](https://img.shields.io/github/pipenv/locked/dependency-version/ignatovskiy/MusicGenerator/flask)
+![](https://img.shields.io/github/pipenv/locked/dependency-version/ignatovskiy/MusicGenerator/beautifulsoup4)
+![](https://img.shields.io/github/pipenv/locked/dependency-version/ignatovskiy/MusicGenerator/requests)
+![](https://img.shields.io/github/pipenv/locked/dependency-version/ignatovskiy/MusicGenerator/keras)
+![](https://img.shields.io/github/pipenv/locked/dependency-version/ignatovskiy/MusicGenerator/numpy)
+![](https://img.shields.io/github/pipenv/locked/dependency-version/ignatovskiy/MusicGenerator/music21)
+![](https://img.shields.io/github/pipenv/locked/dependency-version/ignatovskiy/MusicGenerator/pyfluidsynth?label=pyFluidSynth&logo=v.1.3.0&logoColor=blue)
 
 ## Roadmap
 
