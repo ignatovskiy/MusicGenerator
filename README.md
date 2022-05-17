@@ -12,7 +12,8 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/ignatovskiy/MusicGenerator?color=dark-green) ![Issues](https://img.shields.io/github/issues/ignatovskiy/MusicGenerator) ![License](https://img.shields.io/github/license/ignatovskiy/MusicGenerator) ![](https://img.shields.io/github/workflow/status/ignatovskiy/MusicGenerator/Checks/master)
+![Contributors](https://img.shields.io/github/contributors/ignatovskiy/MusicGenerator?color=dark-green) ![Issues](https://img.shields.io/github/issues/ignatovskiy/MusicGenerator) ![License](https://img.shields.io/github/license/ignatovskiy/MusicGenerator) 
+![](https://img.shields.io/github/workflow/status/ignatovskiy/MusicGenerator/Checks/master) ![](https://img.shields.io/github/languages/code-size/ignatovskiy/MusicGenerator)
 
 ## Table Of Contents
 
