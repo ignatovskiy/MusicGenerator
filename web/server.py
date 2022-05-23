@@ -2,7 +2,10 @@ from flask import Flask, render_template
 app = Flask(__name__, template_folder="template", static_folder='static')
 
 with open("web/static/privacy", "r", encoding="UTF-8") as f:
-    text_card = f.read()
+    privacy_card = f.read()
+
+with open("web/static/license", "r", encoding="UTF-8") as f:
+    license_card = f.read()
 
 
 @app.route('/')
@@ -12,12 +15,12 @@ def render_start_page():
 
 @app.route('/privacy')
 def render_privacy_page():
-    return render_template("index.html", indicator_value=32, text_card=text_card)
+    return render_template("index.html", indicator_value=32, text_card=privacy_card)
 
 
 @app.route('/license')
 def render_license_page():
-    return render_template("index.html", indicator_value=70)
+    return render_template("index.html", indicator_value=70, text_card=license_card)
 
 
 if __name__ == '__main__':

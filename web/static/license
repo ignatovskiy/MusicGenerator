@@ -1,8 +1,9 @@
-<article>
-    
+ <div id="blurcont">
+    <div class="three-dimensions-card">
+        <div class="three-dimensions-card-text">
     <h1>The MIT License (MIT)</h1>
 
-    <p>Copyright © 2022 &lt;copyright holders&gt;</p>
+    <p>Copyright © 2022 Nikita Ignatovskiy</p>
 
     <p>Permission is hereby granted, free of charge, to any person obtaining a copy
       of this software and associated documentation files (the “Software”), to deal
@@ -21,4 +22,6 @@
       LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
       OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
       THE SOFTWARE.</p>
-  </article>
+              </div>
+    </div>
+</div>
