@@ -1,22 +1,38 @@
-<a href="/generate/pop/">
-<button class="button" id="pop" >Pop</button></a>
-<a href="/generate/rock/">
-<button class="button" id="rock">Rock</button></a>
-<a href="/generate/country/">
-<button class="button" id="country">Country</button></a>
+<a href="/generate/blues/">
+<button class="button" id="blues">Blues</button></a>
 <a href="/generate/disco/">
 <button class="button" id="disco">Disco</button></a>
+<a href="/generate/folk/">
+<button class="button" id="folk">Folk</button></a>
+<a href="/generate/jazz/">
+<button class="button" id="jazz">Jazz</button></a>
+<a href="/generate/pop/">
+<button class="button" id="pop">Pop</button></a>
+<a href="/generate/rap/">
+<button class="button" id="rap">Rap</button></a>
 
+<a href="/generate/clarinet/">
+<button class="button" id="clarinet">Clarinet</button></a>
+<a href="/generate/guitar/">
+<button class="button" id="guitar">Guitar</button></a>
 <a href="/generate/piano/">
 <button class="button" id="piano">Piano</button></a>
-<a href="/generate/violin/">
-<button class="button" id="violin">Violin</button></a>
+<a href="/generate/saxophone/">
+<button class="button" id="saxophone">Saxophone</button></a>
 <a href="/generate/trumpet/">
 <button class="button" id="trumpet">Trumpet</button></a>
+<a href="/generate/violin/">
+<button class="button" id="violin">Violin</button></a>
 
 <a href="/generate/ds/">
 <button class="button" id="ds">3DS</button></a>
-<a href="/generate/nes/">
-<button class="button" id="nes">NES</button></a>
-<a href="/generate/snes/">
-<button class="button" id="snes">SNES</button></a>
+<a href="/generate/dreamcast/">
+<button class="button" id="dreamcast">Dreamcast</button></a>
+<a href="/generate/ps/">
+<button class="button" id="ps">PS2</button></a>
+<a href="/generate/saturn/">
+<button class="button" id="saturn">Saturn</button></a>
+<a href="/generate/sega/">
+<button class="button" id="sega">Sega</button></a>
+<a href="/generate/wii/">
+<button class="button" id="wii">Wii</button></a>
